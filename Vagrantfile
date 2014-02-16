@@ -9,11 +9,11 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "flask-example-berkshelf"
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "quantal64-vanilla"
+  config.vm.box = "precise64"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "https://dl.dropboxusercontent.com/u/165709740/boxes/quantal64-vanilla.box"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as
@@ -70,6 +70,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell do |sh|
     sh.inline = <<-EOF
       sudo apt-get update
+      sudo apt-get install build-essential --yes
       sudo apt-get install ruby1.9.3 --yes
       sudo gem install chef --version 11.4.4 --no-ri --no-rdoc
     EOF
